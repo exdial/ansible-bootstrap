@@ -1,0 +1,11 @@
+---
+- hosts: all
+  gather_facts: no
+  serial: 1
+  tasks:
+    - name: Remove old facts
+      meta: clear_facts
+    - name: Ensure python installed
+      raw: test -x /usr/bin/python || sudo apt-get update && sudo apt-get -y install python-simplejson
+  vars:
+    ansible_ssh_extra_args: '-o StrictHostKeyChecking=no'
