@@ -1,37 +1,6 @@
 # Ansible-bootstrap
 
-## Coding guidelines
-
-- use [semantic versioning](https:://semver.org)
-- use `ansible-galaxy init {{ rolename }} -p roles/{{ rolename }}` for new role
-- use [snake_case](https://en.wikipedia.org/wiki/Snake_case) for naming variables
-
-## Directories structure
-
-- `.gitignore`
-- `README.md`
-- defaults/
-  - all variables should have default value, defined in `defauls/main.yml`
-  - if variable don't have default value, use *omit* instruction
-  - name of the variable should have name of the role, using snake_case, e.g. `nginx_listen`
-- `handlers/`
-  - handlers names should use snake_case
-- `meta/`
-  - author
-  - description
-  - company
-  - min_ansible_version
-  - platforms
-- `tasks/`
-  - the code should be compact (80 chars), or use YAML multiline (`>`)
-  - use includes, if code length more than 2 screens
-- `templates/`
-  - use `# {{ ansible_managed }}`
-- `tests/`
-- vars/
-  - delete if useless
-
-## Ansible installation
+## Installation
 
 ### Linux
 
@@ -48,14 +17,23 @@ $ brew update
 $ brew install ansible
 ```
 
-## Vagrant installation
-
-```
-https://www.vagrantup.com/downloads.html
-```
-
 ## Create role
 
 ```
 ansible-galaxy init {{ rolename }} -p roles/{{ rolename }}
 ```
+
+## Coding guidelines
+
+- use [semantic versioning](https:://semver.org) for role versioning
+- use `ansible-galaxy init {{ rolename }} -p roles/{{ rolename }}` for creating the new role
+- use [snake_case](https://en.wikipedia.org/wiki/Snake_case) for naming variables
+- all variables should have the default value, defined in `defauls/main.yml`
+- if variable don't have default value, use *omit* instruction
+- variables names should have name of the role in [snake_case](https://en.wikipedia.org/wiki/Snake_case) format, e.g. `nginx_listen`
+- follow [snake_case](https://en.wikipedia.org/wiki/Snake_case) format for naming handlers
+- must have fields in the `meta/`: *author*, *description*, *min_ansible_version*, *platforms*
+- try to fit in 80 chars or use YAML multiline notation `>`
+- use includes, if the code length more than 2 screens
+- use `# {{ ansible_managed }}` at the top of the templates
+- drop `vars/` if you don't use it
