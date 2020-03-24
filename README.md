@@ -36,4 +36,4 @@ ansible-galaxy init {{ rolename }} -p roles/{{ rolename }}
 - try to fit in 80 chars or use YAML multiline notation `>`
 - use includes, if the code length more than 2 screens
 - use `# {{ ansible_managed }}` at the top of the templates
-- drop `vars/` if you don't use it
+- remove `vars/` directory if you don't use it
